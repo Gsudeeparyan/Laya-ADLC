@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: Laya Excel Expert (SharePoint)
+  version: 1.0.0
+  description: >-
+    Inspect, query and change Excel workbooks stored in SharePoint or OneDrive, in place, and remove or
+    restore personal data (PII). Personal data is always returned as tokens such as PERSON_001 or PPSN_002;
+    use the tokens exactly as returned - they are swapped back to real values only inside the saved file.
+servers:
+  - url: https://${{FUNCTION_APP_HOST}}/api
+paths:
+  /workbook/inspect:
+    post:
+      operationId: inspectWorkbook
+      summary: Map a workbook - sheets, tables, columns, formulas, dropdowns, charts, privacy.
+      description: >-
+        ALWAYS call this first for a workbook. Returns every sheet and table with column headings, column
+        kinds (text, number, date, formula), formulas, dropdown options, a few tokenised sample values,
+        which columns hold personal data, and risks. Use the exact headings it returns in later calls.
+      x-openai-isConsequential: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [fileUrl]
+              properties:
+                fileUrl: {type: string, description: Link to the .xlsx file in SharePoint or OneDrive, exactly as the person gave it.}
+                sampleRows: {type: integer, default: 3, description: How many example values to return per column (0-10).}
+      responses:
+        "200": {description: Workbook map, content: {application/json: {schema: {type: object}}}}
+  /workbook/query:
+    post:
+      operationId: queryWorkbook
+      summary: Read rows from a table, optionally filtered, to answer questions.
+      description: >-
+        Returns matching rows (personal data as tokens) and the total count. Use it to answer questions,
+        count, total or check data before changing it. Filters use the same conditions as changes.
+      x-openai-isConsequential: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [fileUrl]
+              properties:
+                fileUrl: {type: string}
+                sheet: {type: string, description: Sheet name.}
+                table: {type: string, description: Excel table name, if the sheet has more than one.}
+                columns: {type: array, items: {type: string}, description: Headings to return (default all).}
+                where:
+                  description: >-
+                    Conditions, all must match. Either {"Status": "Open"} or a list of
+                    {"column": "Amount", "op": "greater_than", "value": 1000}. ops - equals, not_equals, contains,
+                    starts_with, greater_than, less_than, at_least, at_most, before, after, blank, not_blank, in.
+                  oneOf: [{type: object}, {type: array, items: {type: object}}]
+                limit: {type: integer, default: 100}
+                offset: {type: integer, default: 0}
+      responses:
+        "200": {description: Rows, content: {application/json: {schema: {type: object}}}}
+  /workbook/preview:
+    post:
+      operationId: previewChanges
+      summary: Dry run - show exactly what a list of changes would do, without saving.
+      description: Use before applyChanges to show the person the plan in plain words. Nothing is saved.
+      x-openai-isConsequential: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/ChangeRequest"}
+      responses:
+        "200": {description: What would change, content: {application/json: {schema: {type: object}}}}
+  /workbook/apply:
+    post:
+      operationId: applyChanges
+      summary: Make the changes and save the workbook in place in SharePoint.
+      description: >-
+        Applies all changes together (if one fails, none are saved), then saves the file in place.
+        SharePoint version history keeps the previous copy. Refuses to overwrite if someone else changed
+        the file meanwhile. Only call after the person agreed to the preview.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/ChangeRequest"}
+      responses:
+        "200": {description: What changed, content: {application/json: {schema: {type: object}}}}
+  /pii/scan:
+    post:
+      operationId: scanForPii
+      summary: Check a file (Excel, Word, CSV, text) for personal data. Changes nothing.
+      x-openai-isConsequential: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, required: [fileUrl], properties: {fileUrl: {type: string}}}
+      responses:
+        "200": {description: What personal data was found and where, content: {application/json: {schema: {type: object}}}}
+  /pii/clean-copy:
+    post:
+      operationId: createPiiFreeCopy
+      summary: Save a copy of a file with personal data removed, next to the original.
+      description: >-
+        profile "restore" (default) replaces personal data with tokens that can be put back later with
+        restorePiiCopy. profile "anonymise" removes it for good (for sharing or analysis).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [fileUrl]
+              properties:
+                fileUrl: {type: string}
+                profile: {type: string, enum: [restore, anonymise], default: restore}
+      responses:
+        "200": {description: The clean copy, content: {application/json: {schema: {type: object}}}}
+  /pii/restore-copy:
+    post:
+      operationId: restorePiiCopy
+      summary: Put the real values back into a "PII removed" copy (saved as a new "restored" file).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, required: [fileUrl], properties: {fileUrl: {type: string}}}
+      responses:
+        "200": {description: The restored copy, content: {application/json: {schema: {type: object}}}}
+components:
+  schemas:
+    ChangeRequest:
+      type: object
+      required: [fileUrl, ops]
+      properties:
+        fileUrl: {type: string}
+        summary: {type: string, description: One line describing the change for the workbook's change log.}
+        ops:
+          type: array
+          description: >-
+            Changes, applied in order. Each has "op" plus fields. Target with "sheet" and/or "table"; columns by
+            exact heading. insert_column (header, after|before, choices, fill, values, formula, number_format);
+            delete_column (column, force); rename_column (column, new_header); add_rows (rows - list of
+            {heading - value}); update_rows (where, set - {heading - value or formula}); delete_rows (where);
+            sort (by - [{column, order asc|desc}]); dedupe (columns, keep first|last); find_replace (find,
+            replace, column, whole_cell); set_cells (cells - {"B2" - value}); fill_formula (column, formula for
+            the first data row, where); split_column (column, delimiter, into); combine_columns (columns,
+            separator, into); format (column(s)|range, number_format date|currency|percent|number|text, bold,
+            fill colour, font_color, width, wrap, border); conditional_format (column(s), rule equals|
+            greater_than|less_than|between|contains|blank|date_past|date_within_days|duplicates|top|bottom|
+            color_scale|data_bar|formula, value, value2, color, whole_row); add_validation (column, kind
+            list|whole|decimal|date|text_length, choices, min, max); freeze_panes (cell or "header");
+            add_lookup_column (header, key_column, from {sheet|table, key_column, return_column});
+            add_summary (group_by, measures [{agg count|sum|average|min|max, column}], chart); add_chart
+            (category, values, type column|bar|line|pie, title); add_sheet (name, headers); rename_sheet
+            (sheet, new_name); delete_sheet (sheet); convert_to_table (sheet).
+          items:
+            type: object
+            required: [op]
+            properties:
+              op: {type: string}
+            additionalProperties: true

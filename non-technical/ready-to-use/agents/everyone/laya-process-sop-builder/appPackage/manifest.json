@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "ff55de2a-b7e0-5fcf-945f-8b8d6c0e1b9b",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Process & SOP Builder",
+    "full": "Laya Process & SOP Builder"
+  },
+  "description": {
+    "short": "Maps how a piece of work gets done by walking through it with you step by step, ",
+    "full": "Maps how a piece of work gets done by walking through it with you step by step, spots the pain points, suggests improvements, and writes a clear Standard Operating Procedure (SOP) as a Word document with a flowchart."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

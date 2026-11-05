@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "dd6d7a66-7b2d-58ee-aa04-3a503c545ee8",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Comms Writer",
+    "full": "Laya Comms Writer"
+  },
+  "description": {
+    "short": "Writes clear, friendly emails, Teams posts, team and leadership updates and anno",
+    "full": "Writes clear, friendly emails, Teams posts, team and leadership updates and announcements - in plain English with the right tone. Also checks letters and messages for plain English: jargon, long sentences and missing information."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

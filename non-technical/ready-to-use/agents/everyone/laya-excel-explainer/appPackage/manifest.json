@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "035b442b-a732-5bf8-94bb-996973f40e05",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Excel Explainer",
+    "full": "Laya Excel Explainer"
+  },
+  "description": {
+    "short": "Explains any spreadsheet in plain English: what each sheet does, how the numbers",
+    "full": "Explains any spreadsheet in plain English: what each sheet does, how the numbers are worked out, and what looks wrong. Ask questions about your data or get help writing a formula, step by step. I never change your file."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

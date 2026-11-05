@@ -1,0 +1,28 @@
+# Microsoft Copilot agent, built from everyone/skills/meeting-to-actions/SKILL.md by tools/build_agents.py
+id: laya-meeting-actions
+skill: meeting-to-actions
+name: Laya Meeting Actions
+description: Turns meeting notes or a Teams transcript into a short summary, the decisions made, a clear
+  action list (what, who, by when), open questions and a ready-to-send follow-up email. Can prepare the
+  actions for your Action Tracker.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Actions from my notes
+  text: 'Here are my meeting notes. What did we agree and who''s doing what? '
+- title: Use a Teams transcript
+  text: I'll upload a Teams meeting transcript. Can you pull out the decisions and actions?
+- title: Write the follow-up email
+  text: 'Can you write the follow-up email from this meeting? '
+- title: Write minutes
+  text: I need proper minutes for this meeting.
+staff_guide:
+  upload: Your meeting notes or the Teams transcript (.docx or .vtt), or paste the notes in.
+  you_get: A summary, decisions, an action table (what, who, by when), open questions and a ready-to-send
+    follow-up email.
+  example: Paste your notes from the weekly team meeting. You get five actions with owners and dates -
+    and the agent asks you about the two that had no owner.
+  tips:
+  - Check the actions with their owners before you send the email.
+  - To track actions over time, ask for a message to add them to your Action Tracker.

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Excel Builder",
+  "description": "Builds new Excel workbooks for you - trackers, registers, logs, lists and simple plans - with dropdowns, automatic IDs, calculated columns, a README and a change log. Just describe what you want to keep track of; I'll suggest the columns. Every workbook is 'AI-safe', so it can be changed later without breaking.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Build an action tracker",
+      "text": "I'd like an Excel action tracker for my team's actions."
+    },
+    {
+      "title": "Build a register",
+      "text": "I need an Excel register to keep track of "
+    },
+    {
+      "title": "Build a RAID log",
+      "text": "I need a RAID log (risks, assumptions, issues, dependencies) for my project."
+    },
+    {
+      "title": "Build a simple project plan",
+      "text": "Can you build me a simple project plan in Excel?"
+    },
+    {
+      "title": "I'm not sure what I need",
+      "text": "I want to keep track of something in Excel but I'm not sure how to set it up. Here's what I do: "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

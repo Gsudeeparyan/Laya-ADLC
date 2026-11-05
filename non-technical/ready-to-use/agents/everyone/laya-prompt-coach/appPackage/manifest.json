@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "b0fbe03f-05f0-521e-97db-179d6b80b4ea",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Prompt Coach",
+    "full": "Laya Prompt Coach"
+  },
+  "description": {
+    "short": "Turns your rough request into a clear prompt you can paste straight in, shows wh",
+    "full": "Turns your rough request into a clear prompt you can paste straight in, shows why it's better, and teaches you one tip each time. Bring it a bad answer from Copilot and it works out what was missing."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

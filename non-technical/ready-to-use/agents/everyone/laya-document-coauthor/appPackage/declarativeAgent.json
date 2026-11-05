@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Document Co-author",
+  "description": "Writes documents with you, step by step - briefing notes, proposals, reports, guides and FAQs. We agree the outline first, then draft section by section, check it from your reader's point of view, and you get a Word file that remembers where it's up to.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Write a briefing note",
+      "text": "I need to write a briefing note about "
+    },
+    {
+      "title": "Write a proposal",
+      "text": "I want to write a proposal for "
+    },
+    {
+      "title": "Turn my notes into a document",
+      "text": "I have rough notes I'd like to turn into a proper document."
+    },
+    {
+      "title": "Write a how-to guide",
+      "text": "I need a simple how-to guide for my team on "
+    },
+    {
+      "title": "Continue my draft",
+      "text": "I'd like to continue working on my draft. I'll upload it."
+    },
+    {
+      "title": "Questions for someone else",
+      "text": "I need answers from someone else before I can finish this. Help me write them a questionnaire about "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "124ff55b-0d91-5749-aa41-d74227eb3fd8",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Catch Me Up",
+    "full": "Laya Catch Me Up"
+  },
+  "description": {
+    "short": "Reads your own email, Teams chats and meetings and tells you what needs you, wit",
+    "full": "Reads your own email, Teams chats and meetings and tells you what needs you, with replies owed, decisions made and deadlines coming, each linked to where it came from. For people with the paid Microsoft Copilot licence."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

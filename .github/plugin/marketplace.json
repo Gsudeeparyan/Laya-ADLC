@@ -1,0 +1,18 @@
+{
+  "name": "laya-adlc",
+  "owner": {
+    "name": "Laya Healthcare"
+  },
+  "metadata": {
+    "description": "Laya's approved GitHub Copilot skills and agents.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "laya-engineering",
+      "description": "Laya's developer skills and role agents.",
+      "version": "1.0.0",
+      "source": "./technical/skills-and-agents"
+    }
+  ]
+}

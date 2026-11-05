@@ -1,0 +1,17 @@
+# Settings shared by every Agents Toolkit app package that tools/build_agents.py produces.
+# IT: check these before uploading packages to the Microsoft 365 admin centre.
+
+developer:
+  name: Laya Healthcare - Laya-ADLC agents
+  # Teams app manifests need https links. Point these at your intranet page for the
+  # agent library and at Laya's internal privacy / acceptable-use pages.
+  websiteUrl: https://www.layahealthcare.ie
+  privacyUrl: https://www.layahealthcare.ie
+  termsOfUseUrl: https://www.layahealthcare.ie
+
+app_version: 1.0.0
+teams_manifest_version: "1.19"
+# Declarative agent manifest version. Microsoft says to use the latest for new agents (v1.9, checked 05/11/2026).
+# tests/test_skills.py validates every package against the schema in tests/schemas/.
+declarative_agent_schema: v1.9
+accent_color: "#1F4E78"

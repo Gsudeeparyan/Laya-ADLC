@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Excel Expert for SharePoint",
+  "description": "Works directly on Excel files in SharePoint and OneDrive - paste the link, no downloading. Answers questions about the data, makes exact changes that keep every formula and total working, saves in place (version history keeps the old copy), and never shows the AI real personal data - only tokens like PERSON_001. Can also make and restore PII-free copies.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Ask about a file",
+      "text": "Here's the link to my workbook - how many rows have Status Open? "
+    },
+    {
+      "title": "Change a file in place",
+      "text": "In this SharePoint workbook, please add a column called "
+    },
+    {
+      "title": "Add rows",
+      "text": "Add these rows to the workbook at this link: "
+    },
+    {
+      "title": "Check for personal data",
+      "text": "Does this file have personal data? "
+    },
+    {
+      "title": "Make a PII-free copy",
+      "text": "Make a copy of this file with the personal data removed: "
+    }
+  ],
+  "capabilities": [],
+  "actions": [
+    {
+      "id": "layaExcelActions",
+      "file": "ai-plugin.json"
+    }
+  ]
+}

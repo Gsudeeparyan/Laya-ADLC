@@ -1,0 +1,85 @@
+adlc_spec: 1
+workbook:
+  title: AI Use Register
+  template: ai-use-register
+  purpose: >-
+    The list of where Laya uses AI beyond personal drafting: who owns each use, what it does, how risky it
+    is, and when it's next reviewed. Owners and reviewers keep it current.
+  owner: ""
+  how_to_use:
+    - "Add one row per AI use. Leave the ID blank - it is filled in for you."
+    - "Set the risk tier using roles-and-lifecycle/risk-tiers.md. If you're unsure, pick the higher one and ask."
+    - "Every row needs one named owner: a person, not a team or a tool."
+    - "T2 and T3 uses need the sign-offs recorded here before they go live."
+    - "Keep personal data out of this register. Describe the kind of data, not the data itself."
+
+sheets:
+  - name: Register
+    description: One row per AI use.
+    tables:
+      - key: register
+        name: tblAiUses
+        id_prefix: AI-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: name
+            header: AI use
+            type: text
+            required: true
+            width: 34
+            description: A short name for what it does.
+          - key: owner
+            header: Owner
+            type: text
+            required: true
+            description: The one person accountable for this use.
+          - key: area
+            header: Business area
+            type: text
+            description: The team or function using it.
+          - key: purpose
+            header: Purpose
+            type: text
+            width: 44
+            description: What decision or output it produces, and who it affects.
+          - key: tool
+            header: Tool or supplier
+            type: text
+            description: For example Microsoft Copilot, GitHub Copilot, or a named supplier.
+          - key: tier
+            header: Risk tier
+            type: choice
+            choices: [T0, T1, T2, T3]
+            description: From roles-and-lifecycle/risk-tiers.md.
+          - key: data
+            header: Kind of data
+            type: choice
+            choices: [No personal data, Personal data, Health or other special category data]
+            description: The most sensitive kind it touches.
+          - key: oversight
+            header: Human oversight
+            type: text
+            width: 34
+            description: Who checks the output, and how.
+          - key: dpia
+            header: DPIA
+            type: choice
+            choices: [Not needed, Needed, In progress, Done]
+            description: Agreed with the Data Protection Officer.
+          - key: signoff
+            header: Sign-offs
+            type: text
+            width: 30
+            description: Who signed off and when, as T2 and T3 require.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Proposed, Approved, Live, Paused, Retired]
+            description: Where it is now.
+          - key: review
+            header: Next review
+            type: date
+            description: When it's next looked at. At least yearly, and sooner for higher tiers.

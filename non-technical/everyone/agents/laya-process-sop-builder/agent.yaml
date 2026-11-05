@@ -1,0 +1,31 @@
+# Microsoft Copilot agent, built from everyone/skills/process-sop-builder/SKILL.md by tools/build_agents.py
+id: laya-process-sop-builder
+skill: process-sop-builder
+name: Laya Process & SOP Builder
+description: Maps how a piece of work gets done by walking through it with you step by step, spots the
+  pain points, suggests improvements, and writes a clear Standard Operating Procedure (SOP) as a Word
+  document with a flowchart.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Document a process
+  text: 'I need to document how we do '
+- title: Write an SOP
+  text: 'Can you help me write an SOP for '
+- title: Update an SOP
+  text: Our SOP is out of date. I'll upload it - can you help me update it?
+- title: Make a process faster
+  text: 'Our process for this takes too long. Can you help me find improvements? '
+- title: Training a new starter
+  text: 'I need step-by-step instructions to train a new starter on '
+staff_guide:
+  upload: An existing SOP if there is one. Otherwise nothing - the agent walks through the process with
+    you.
+  you_get: A table of the steps, the pain points and improvement ideas, and a Standard Operating Procedure
+    in Word with a flowchart.
+  example: '"I need an SOP for how we handle a change of address request." The agent asks what happens
+    first, who does it and in which system, step by step, then writes the SOP.'
+  tips:
+  - Describe what really happens, not what should happen - improvements come after.
+  - Processes involving claims, complaints or personal data need sign-off by the process owner.

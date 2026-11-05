@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Excel Explainer",
+  "description": "Explains any spreadsheet in plain English: what each sheet does, how the numbers are worked out, and what looks wrong. Ask questions about your data or get help writing a formula, step by step. I never change your file.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Explain this spreadsheet",
+      "text": "I've been given this spreadsheet. Can you explain what it does?"
+    },
+    {
+      "title": "Explain a formula",
+      "text": "What does this formula do? "
+    },
+    {
+      "title": "Help me write a formula",
+      "text": "I need a formula in Excel that works out "
+    },
+    {
+      "title": "Answer a question about my data",
+      "text": "I have a question about the data in my spreadsheet: "
+    },
+    {
+      "title": "Check for problems",
+      "text": "Can you check my spreadsheet for errors or anything that looks wrong?"
+    },
+    {
+      "title": "Why is this number wrong?",
+      "text": "This number in my spreadsheet doesn't look right, and I'd expect it to be "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

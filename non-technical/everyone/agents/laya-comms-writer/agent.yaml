@@ -1,0 +1,29 @@
+# Microsoft Copilot agent, built from everyone/skills/comms-writer/SKILL.md by tools/build_agents.py
+id: laya-comms-writer
+skill: comms-writer
+name: Laya Comms Writer
+description: 'Writes clear, friendly emails, Teams posts, team and leadership updates and announcements
+  - in plain English with the right tone. Also checks letters and messages for plain English: jargon,
+  long sentences and missing information.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Write an email
+  text: 'Can you help me write an email to '
+- title: Reply to an email
+  text: 'Help me reply to this email: '
+- title: Update for my manager
+  text: 'I need to write a short update for my manager on '
+- title: Announce something
+  text: 'I need to announce something to my team: '
+- title: Is this clear?
+  text: 'Can you check this text for plain English and make it clearer? '
+staff_guide:
+  upload: Nothing needed. Paste the email you're replying to, or the text you want checked.
+  you_get: A ready-to-send draft with a subject line, or a plain-English review with a clearer rewrite.
+  example: '"Write an email to my team announcing that the office will close early on Friday for training."
+    You get a short, friendly email with a clear subject line and the key details first.'
+  tips:
+  - Customer and member letters must still go through Laya's normal approval.
+  - Ask for 'shorter', 'warmer' or 'more formal' versions.

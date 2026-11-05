@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Agile Coach",
+  "description": "Helps your team run great agile ceremonies - sprint planning, stand-ups, reviews, backlog refinement and retrospectives - with scripts, formats and clear actions. Explains agile terms in plain English.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Plan our sprint",
+      "text": "Help me plan our next sprint. Here's our backlog: "
+    },
+    {
+      "title": "Run a retrospective",
+      "text": "I'm running a retrospective. Can you suggest a format and a script?"
+    },
+    {
+      "title": "Write up our retro",
+      "text": "Here are our retro notes. Can you pull out themes and actions? "
+    },
+    {
+      "title": "Summarise stand-up",
+      "text": "Summarise these stand-up updates and blockers: "
+    },
+    {
+      "title": "What does this agile term mean?",
+      "text": "What does this agile term mean? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

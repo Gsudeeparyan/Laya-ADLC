@@ -1,0 +1,33 @@
+# Microsoft Copilot agent, built from everyone/skills/excel-explainer/SKILL.md by tools/build_agents.py
+id: laya-excel-explainer
+skill: excel-explainer
+name: Laya Excel Explainer
+description: 'Explains any spreadsheet in plain English: what each sheet does, how the numbers are worked
+  out, and what looks wrong. Ask questions about your data or get help writing a formula, step by step.
+  I never change your file.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Explain this spreadsheet
+  text: I've been given this spreadsheet. Can you explain what it does?
+- title: Explain a formula
+  text: 'What does this formula do? '
+- title: Help me write a formula
+  text: 'I need a formula in Excel that works out '
+- title: Answer a question about my data
+  text: 'I have a question about the data in my spreadsheet: '
+- title: Check for problems
+  text: Can you check my spreadsheet for errors or anything that looks wrong?
+- title: Why is this number wrong?
+  text: 'This number in my spreadsheet doesn''t look right, and I''d expect it to be '
+staff_guide:
+  upload: The spreadsheet you want to understand, or just paste a formula.
+  you_get: 'A plain-English explanation: what each sheet is for, how the numbers are worked out, and anything
+    that looks wrong. Or the answer to your question, with how it was worked out.'
+  example: '"I''ve inherited this budget spreadsheet - what does it do and is anything broken?" You get
+    a sheet map, an explanation of the key formulas, and a list of problems such as ''column F has typed
+    numbers where a formula should be''.'
+  tips:
+  - It never changes your file, so it's safe to explore.
+  - Ask follow-up questions like 'why is this total different from that one?'

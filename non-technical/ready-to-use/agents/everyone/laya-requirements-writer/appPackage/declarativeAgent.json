@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Requirements Writer",
+  "description": "Helps you tell IT or a supplier exactly what you need. Turns a business need into a clear requirements document with testable requirements, user stories, priorities and open questions - plus a user-story file for Azure DevOps or Jira.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "I need IT to build something",
+      "text": "I need IT to build or change something. Here's the problem: "
+    },
+    {
+      "title": "Write user stories",
+      "text": "IT asked me for user stories for "
+    },
+    {
+      "title": "Brief a supplier",
+      "text": "I need to brief a supplier on what we need."
+    },
+    {
+      "title": "Review my requirements",
+      "text": "Can you check my requirements are clear and testable? I'll upload them."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

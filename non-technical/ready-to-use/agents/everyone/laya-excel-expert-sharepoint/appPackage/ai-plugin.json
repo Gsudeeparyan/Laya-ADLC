@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "Laya Excel Actions",
+  "namespace": "layaexcel",
+  "description_for_human": "Inspect, query and change Excel files in SharePoint in place; remove or restore personal data.",
+  "description_for_model": "Use for Excel workbooks in SharePoint or OneDrive given as a link. Always call inspectWorkbook first and use its exact sheet, table and column names. Answer questions with queryWorkbook. For changes, build the ops list, call previewChanges, tell the person the plan, then applyChanges. Values like PERSON_001 are privacy tokens: use them exactly as returned and never ask for or invent real personal details.",
+  "functions": [
+    {
+      "name": "inspectWorkbook",
+      "description": "Map a workbook in SharePoint/OneDrive: sheets, tables, columns, formulas, dropdowns, which columns hold personal data. Call first, every time."
+    },
+    {
+      "name": "queryWorkbook",
+      "description": "Read or count rows matching conditions, to answer questions. Personal data comes back as tokens."
+    },
+    {
+      "name": "previewChanges",
+      "description": "Dry run: what a list of changes would do. Nothing is saved."
+    },
+    {
+      "name": "applyChanges",
+      "description": "Make the changes and save the workbook in place in SharePoint (version history keeps the old copy).",
+      "capabilities": {
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Save these changes to the workbook?",
+          "body": "**Change:** {{function.parameters.summary}}\n\nSharePoint version history keeps the previous copy."
+        }
+      }
+    },
+    {
+      "name": "scanForPii",
+      "description": "Check a file for personal data. Changes nothing."
+    },
+    {
+      "name": "createPiiFreeCopy",
+      "description": "Save a copy of a file with personal data removed, next to the original.",
+      "capabilities": {
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Create a PII-free copy?",
+          "body": "A new file '(PII removed)' will be saved next to the original."
+        }
+      }
+    },
+    {
+      "name": "restorePiiCopy",
+      "description": "Put real values back into a PII-free copy, saved as a new '(restored)' file.",
+      "capabilities": {
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Restore real values?",
+          "body": "A new file '(restored)' containing personal data will be saved next to the clean copy."
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "OAuthPluginVault",
+        "reference_id": "${{OAUTH_REFERENCE_ID}}"
+      },
+      "spec": {
+        "url": "openapi.yaml"
+      },
+      "run_for_functions": [
+        "inspectWorkbook",
+        "queryWorkbook",
+        "previewChanges",
+        "applyChanges",
+        "scanForPii",
+        "createPiiFreeCopy",
+        "restorePiiCopy"
+      ]
+    }
+  ]
+}

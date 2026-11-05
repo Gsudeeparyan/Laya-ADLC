@@ -1,0 +1,30 @@
+# Microsoft Copilot agent, built from everyone/skills/excel-data-cleaner/SKILL.md by tools/build_agents.py
+id: laya-excel-data-cleaner
+skill: excel-data-cleaner
+name: Laya Excel Data Cleaner
+description: 'Cleans messy spreadsheet data: duplicates, extra spaces, inconsistent spellings, dates and
+  numbers stored as text, extra header or totals rows. Combines sheets or files and matches lists. You
+  agree every fix first; nothing is deleted without being kept aside and explained.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Clean up my data
+  text: My spreadsheet data is messy. Can you help me clean it up?
+- title: Remove duplicates
+  text: I need to remove duplicates from my list.
+- title: Combine files
+  text: I have several files with the same kind of data that I need to combine into one.
+- title: Match two lists
+  text: I need to compare two lists and see what matches and what doesn't.
+- title: Fix dates and numbers
+  text: The dates or numbers in my spreadsheet won't sort or add up properly.
+staff_guide:
+  upload: The messy file(s) - Excel or CSV exports. Several files if you want to combine them.
+  you_get: 'A clean workbook: the clean data, a Cleaning log of every fix, a Removed rows sheet (nothing
+    is silently deleted) and a list of anything that needs a person to check.'
+  example: Upload an export where 'Dublin', 'dublin ' and 'DUBLIN' all appear and some dates are text.
+    The agent lists the problems, you reply 'all', and you get a clean file with a log of what changed.
+  tips:
+  - Check the 'Needs a person' sheet - the agent won't guess names or amounts.
+  - Your original file is never changed.

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "51b35eb4-993d-5854-a5b5-9639deeab5ec",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Idea Refiner",
+    "full": "Laya Idea Refiner"
+  },
+  "description": {
+    "short": "Got an idea for doing things better? I'll ask friendly but probing questions in ",
+    "full": "Got an idea for doing things better? I'll ask friendly but probing questions in short rounds, each with a suggested answer you can accept with a 'yes', check what it depends on, compare a few ways forward and help you produce a One-Page Idea Brief your manager can say yes to."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

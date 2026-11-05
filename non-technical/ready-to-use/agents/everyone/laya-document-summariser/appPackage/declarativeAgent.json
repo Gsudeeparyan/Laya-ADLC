@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Document Summariser",
+  "description": "Summarises long documents (Word, PDF, PowerPoint) at the length you need, with every point linked to its section or page so you can check it. Compares two versions and explains what changed, and pulls out actions, deadlines, obligations and figures.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Summarise a document",
+      "text": "Can you summarise this document for me?"
+    },
+    {
+      "title": "What changed?",
+      "text": "I have two versions of a document. What changed between them?"
+    },
+    {
+      "title": "What do I need to do?",
+      "text": "What actions and deadlines are in this document?"
+    },
+    {
+      "title": "Key points for my manager",
+      "text": "I need a one-page summary of this document for my manager."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

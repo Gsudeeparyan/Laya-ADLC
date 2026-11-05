@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "b5ec9f5c-88d2-5c7b-b5fc-38e1ab8123dd",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Meeting Recap",
+    "full": "Laya Meeting Recap"
+  },
+  "description": {
+    "short": "Reads a Teams meeting you attended, with nothing to upload, and gives you the de",
+    "full": "Reads a Teams meeting you attended, with nothing to upload, and gives you the decisions, a clear action list (what, who, by when), open questions and a ready-to-send follow-up email. For people with the paid Microsoft Copilot licence."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

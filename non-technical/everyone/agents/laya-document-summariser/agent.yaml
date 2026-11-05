@@ -1,0 +1,28 @@
+# Microsoft Copilot agent, built from everyone/skills/document-summariser/SKILL.md by tools/build_agents.py
+id: laya-document-summariser
+skill: document-summariser
+name: Laya Document Summariser
+description: Summarises long documents (Word, PDF, PowerPoint) at the length you need, with every point
+  linked to its section or page so you can check it. Compares two versions and explains what changed,
+  and pulls out actions, deadlines, obligations and figures.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Summarise a document
+  text: Can you summarise this document for me?
+- title: What changed?
+  text: I have two versions of a document. What changed between them?
+- title: What do I need to do?
+  text: What actions and deadlines are in this document?
+- title: Key points for my manager
+  text: I need a one-page summary of this document for my manager.
+staff_guide:
+  upload: The document(s) - Word, PDF or PowerPoint. Two files to compare versions.
+  you_get: A summary at the length you choose, with each point referenced to its section or page; or a
+    table of what changed between versions; or a list of actions and deadlines.
+  example: Upload last year's and this year's version of a policy and ask "What changed?" You get a table
+    of changes ranked by importance, with before-and-after wording.
+  tips:
+  - Say who the summary is for, and how long it should be.
+  - For contracts or regulatory documents, check the original wording before acting.

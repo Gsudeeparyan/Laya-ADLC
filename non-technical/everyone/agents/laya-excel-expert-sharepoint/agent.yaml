@@ -1,0 +1,36 @@
+# Microsoft Copilot agent, built from everyone/skills/excel-expert-sharepoint/SKILL.md by tools/build_agents.py
+id: laya-excel-expert-sharepoint
+skill: excel-expert-sharepoint
+name: Laya Excel Expert for SharePoint
+description: Works directly on Excel files in SharePoint and OneDrive - paste the link, no downloading.
+  Answers questions about the data, makes exact changes that keep every formula and total working, saves
+  in place (version history keeps the old copy), and never shows the AI real personal data - only tokens
+  like PERSON_001. Can also make and restore PII-free copies.
+capabilities:
+  code_interpreter: false
+  web_search: false
+conversation_starters:
+- title: Ask about a file
+  text: 'Here''s the link to my workbook - how many rows have Status Open? '
+- title: Change a file in place
+  text: 'In this SharePoint workbook, please add a column called '
+- title: Add rows
+  text: 'Add these rows to the workbook at this link: '
+- title: Check for personal data
+  text: 'Does this file have personal data? '
+- title: Make a PII-free copy
+  text: 'Make a copy of this file with the personal data removed: '
+actions: sharepoint-backend
+staff_guide:
+  upload: Nothing - paste the SharePoint or OneDrive link to the file (Share > Copy link, or the address
+    bar).
+  you_get: Answers, or the change made directly in the file in SharePoint, with a list of what changed.
+    SharePoint version history keeps the previous copy.
+  example: Paste the link to the team tracker and say "Mark every action owned by Liam that's past its
+    due date as Blocked." The agent shows what it will change, you confirm, and the file in SharePoint
+    is updated.
+  tips:
+  - You'll see tokens like PERSON_001 instead of names - that's the privacy protection working; the file
+    itself keeps the real names.
+  - If the file is open and locked by someone, close it or try again in a minute.
+  - One file per request works best.

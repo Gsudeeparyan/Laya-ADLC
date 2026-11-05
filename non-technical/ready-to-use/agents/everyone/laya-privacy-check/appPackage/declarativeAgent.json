@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Privacy & AI Check",
+  "description": "A quick, friendly check before you share data, start something new, or use AI for something you're unsure about. Simple questions, a green/amber/red result with reasons, practical safeguards, and when to talk to the Data Protection Officer or the AI owner. Screening only - not legal advice.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Can I share this?",
+      "text": "I want to share some data. Can you check whether it's OK?"
+    },
+    {
+      "title": "New project or process",
+      "text": "I'm starting something new that may use personal information."
+    },
+    {
+      "title": "Can I use AI for this?",
+      "text": "I want to use AI or Copilot for something and I'm not sure if it's OK."
+    },
+    {
+      "title": "New supplier or tool",
+      "text": "We're bringing in a new tool or supplier that will handle our data."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

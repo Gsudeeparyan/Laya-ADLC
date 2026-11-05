@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "505d2a46-67c0-5d4c-88ad-01c652ec963f",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Excel Expert",
+    "full": "Laya Excel Expert"
+  },
+  "description": {
+    "short": "A senior Excel expert for any workbook",
+    "full": "A senior Excel expert for any workbook. Tell me in plain words what to add, change, fix or tidy - rows, columns, formulas, lookups, dropdowns, highlights, sorting, duplicates, summaries, charts - and I'll make exactly that change, keep every formula, total and table working, and show you precisely which cells changed. Personal data is protected automatically."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

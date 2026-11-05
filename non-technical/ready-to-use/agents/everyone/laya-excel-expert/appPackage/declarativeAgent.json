@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Excel Expert",
+  "description": "A senior Excel expert for any workbook. Tell me in plain words what to add, change, fix or tidy - rows, columns, formulas, lookups, dropdowns, highlights, sorting, duplicates, summaries, charts - and I'll make exactly that change, keep every formula, total and table working, and show you precisely which cells changed. Personal data is protected automatically.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Add rows",
+      "text": "Please add these rows to my spreadsheet: "
+    },
+    {
+      "title": "Add a column",
+      "text": "Add a new column to my spreadsheet called "
+    },
+    {
+      "title": "Update rows that match",
+      "text": "In my spreadsheet, for every row where "
+    },
+    {
+      "title": "Add a lookup",
+      "text": "Bring in a column from another sheet by matching "
+    },
+    {
+      "title": "Summary with chart",
+      "text": "Make a summary of my data by "
+    },
+    {
+      "title": "Fix my formulas",
+      "text": "Some formulas in my spreadsheet are broken. Can you fix them?"
+    },
+    {
+      "title": "Why is this total wrong?",
+      "text": "A number in my spreadsheet looks wrong. The cell is "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

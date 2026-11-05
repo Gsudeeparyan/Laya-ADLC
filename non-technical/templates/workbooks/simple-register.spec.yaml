@@ -1,0 +1,68 @@
+adlc_spec: 1
+workbook:
+  title: Simple Register
+  template: simple-register
+  purpose: >-
+    A general-purpose list for anything you need to keep track of - requests, contacts,
+    assets, suppliers, documents. The Excel Builder agent renames and extends it to fit.
+  owner: ""
+  how_to_use:
+    - "Add one row per item on the 'Register' sheet. Leave the ID blank - it is filled in for you."
+    - "Pick the Category and Status from the dropdowns."
+    - "Want different columns or options? Upload this file to the Laya Excel Expert agent and ask in plain words."
+
+sheets:
+  - name: Register
+    description: One row per item.
+    tables:
+      - key: register
+        name: tblRegister
+        id_prefix: REG-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: item
+            header: Item
+            type: text
+            required: true
+            width: 40
+            description: What this row is about.
+          - key: category
+            header: Category
+            type: choice
+            choices: [Category A, Category B, Category C]
+            description: The group it belongs to. Ask the Excel Expert agent to change these options.
+          - key: owner
+            header: Owner
+            type: text
+            description: The person responsible for it.
+          - key: date_added
+            header: Date added
+            type: date
+            description: When it was added to the register.
+          - key: review_date
+            header: Review date
+            type: date
+            description: When it should next be checked.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Active, On hold, Closed]
+            required: true
+            description: Whether it is still current.
+            highlights:
+              - {when: equals, value: Closed, color: grey, whole_row: true}
+          - key: review_due
+            header: Review due?
+            type: formula
+            formula: '=IF(OR([@[Review date]]="",[@Status]="Closed"),"",IF([@[Review date]]<=TODAY(),"Yes","No"))'
+            description: Yes when the review date has arrived.
+            highlights:
+              - {when: equals, value: "Yes", color: amber}
+          - key: notes
+            header: Notes
+            type: long_text
+            width: 40
+            description: Anything else useful.

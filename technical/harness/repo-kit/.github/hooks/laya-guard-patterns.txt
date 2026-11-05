@@ -1,0 +1,32 @@
+# Laya guard patterns. One table, read by laya-guard.sh and laya-guard.ps1.
+# Columns, separated by tabs: scope (shell or any), flags (i = ignore case, s = exact case), regex, reason.
+# Regexes must work in both grep -E and .NET, so use no \b and no [[:space:]].
+# This is a second layer that catches common mistakes. Rulesets and CI are the real enforcement.
+# Shell commands
+shell	i	git +push[^;&|]* (--force|-f)([^a-zA-Z-]|$)	Force-pushing rewrites shared history. Push normally, or ask a person.
+shell	i	git +reset +--hard	This throws away uncommitted work. Ask the person first.
+shell	i	git +clean +-[a-z]*f	This deletes untracked files. Ask the person first.
+shell	i	--no-verify	Skipping git hooks hides failing checks. Fix the failure instead.
+shell	i	core\.hooksPath	Changing the hooks path turns off this repo's checks.
+shell	i	rm +-[a-z]*(rf|fr)[a-z]* +['\"]?(/|~|\*|\.|\.\.|\$HOME)(['\" ]|/\*|$)	This would delete far more than one folder. Name the exact folder.
+shell	i	remove-item +['\"]?([a-z]:\\+['\"]?|\$home|~)( |$)[^;|&]*-recurse	This would delete far more than one folder. Name the exact folder.
+shell	i	format-volume|mkfs\.|dd +if=	This wipes a disk. A person runs this, if at all.
+shell	i	(curl|wget)[^|;&]*\| *(sudo +)?(ba|z)?sh	Piping a download into a shell runs code nobody has reviewed.
+shell	i	(invoke-webrequest|iwr|irm|invoke-restmethod|curl)[^|;&]*\| *(iex|invoke-expression)	Piping a download into PowerShell runs code nobody has reviewed.
+shell	i	drop +(table|schema|database)|truncate +table	Destructive database commands go through a reviewed migration and a person.
+shell	i	gh +repo +delete|gh +pr +merge[^;|&]*--admin|gh +secret +(set|delete)	A person does this, not an agent.
+shell	i	pip3? +install[^;|&]*--(extra-)?index-url	Installing from another package index risks dependency confusion. Use the approved registry.
+shell	i	chmod +-r +777	Opening a folder to everyone is never the fix.
+shell	i	az +group +delete|terraform +destroy|az +deployment[^;|&]*--mode +complete	This destroys cloud resources. A person runs this.
+# Secret files, in any tool
+any	i	(^|[^a-z0-9_.-])\.env(['\"\\ ]|$)	Secret files stay out of agent sessions. Use .env.example for the shape of the settings.
+any	i	(^|[^a-z0-9])id_(rsa|ed25519)(['\"\\ ]|$)	Private keys stay out of agent sessions.
+any	i	\.(pem|pfx|p12)(['\"\\ ]|$)	Certificates and keys stay out of agent sessions.
+# Secrets and personal data in anything being written or run
+any	s	-----BEGIN [A-Z ]*PRIVATE KEY-----	That looks like a private key. Secrets belong in Key Vault.
+any	s	AKIA[0-9A-Z]{16}	That looks like a cloud access key. Secrets belong in Key Vault.
+any	s	gh[pousr]_[0-9A-Za-z]{36}	That looks like a GitHub token. Secrets belong in Key Vault.
+any	s	github_pat_[0-9A-Za-z_]{22,}	That looks like a GitHub token. Secrets belong in Key Vault.
+any	s	AccountKey=[A-Za-z0-9+/=]{20,}	That looks like an Azure storage key. Secrets belong in Key Vault.
+any	s	(^|[^0-9A-Za-z])[0-9]{7}[A-WY][A-IW]?([^0-9A-Za-z]|$)	That looks like a PPSN. Test data must be synthetic; build it at test time without a real-format number.
+any	s	(^|[^0-9A-Za-z])IE[0-9]{2} ?[A-Z]{4} ?[0-9]{4} ?[0-9]{4} ?[0-9]{4} ?[0-9]{2}([^0-9A-Za-z]|$)	That looks like an Irish IBAN. Test data must be synthetic.

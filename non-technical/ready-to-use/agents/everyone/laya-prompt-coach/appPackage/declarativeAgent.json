@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Prompt Coach",
+  "description": "Turns your rough request into a clear prompt you can paste straight in, shows why it's better, and teaches you one tip each time. Bring it a bad answer from Copilot and it works out what was missing.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Help me ask this",
+      "text": "I want Copilot to help me with something, but I'm not sure how to ask. Here's what I need: "
+    },
+    {
+      "title": "Copilot got it wrong",
+      "text": "I asked Copilot this and the answer wasn't what I wanted. Here's what I asked, and what was wrong: "
+    },
+    {
+      "title": "A prompt for a weekly job",
+      "text": "I do this task every week and I'd like a prompt I can reuse: "
+    },
+    {
+      "title": "Teach me the basics",
+      "text": "How do I write a good prompt? Show me with an example from my kind of work."
+    }
+  ],
+  "capabilities": []
+}

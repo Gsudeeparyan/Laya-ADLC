@@ -1,0 +1,32 @@
+# Microsoft Copilot agent, built from paid-licence/skills/catch-me-up/SKILL.md by tools/build_agents.py
+id: laya-catch-me-up
+skill: catch-me-up
+name: Laya Catch Me Up
+description: Reads your own email, Teams chats and meetings and tells you what needs you, with replies owed,
+  decisions made and deadlines coming, each linked to where it came from. For people with the paid Microsoft
+  Copilot licence.
+capabilities:
+  code_interpreter: false
+  web_search: false
+  email: true
+  teams_messages: true
+  meetings: true
+  people: true
+conversation_starters:
+- title: What needs me today?
+  text: What needs me today?
+- title: Back from leave
+  text: 'I''ve been on leave since [date]. What did I miss, and what needs me first? '
+- title: Catch up on a project
+  text: 'Catch me up on [project] over the last two weeks. '
+- title: Before a meeting
+  text: 'I''m meeting [person] later. What''s open between us? '
+staff_guide:
+  upload: Nothing. It reads your own email, chats and meetings, and only what you can already see.
+  you_get: A short list of what needs you, in order, then deadlines, decisions and things worth knowing, each
+    with a link to the original.
+  example: Back after two weeks. You get four things that need you, the most urgent first, and two decisions
+    made while you were away. It offers to draft the replies, and you decide what gets sent.
+  tips:
+  - It can't send anything. You read the draft and send it yourself.
+  - Open the original before acting on anything important. A summary can miss things.

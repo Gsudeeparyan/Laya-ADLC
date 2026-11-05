@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Meeting Recap",
+  "description": "Reads a Teams meeting you attended, with nothing to upload, and gives you the decisions, a clear action list (what, who, by when), open questions and a ready-to-send follow-up email. For people with the paid Microsoft Copilot licence.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "My last meeting",
+      "text": "What did we decide in my last meeting, and who's doing what?"
+    },
+    {
+      "title": "Follow-up email",
+      "text": "Write the follow-up email for [meeting name]. "
+    },
+    {
+      "title": "Minutes",
+      "text": "I need proper minutes for [meeting name] on [date]. "
+    },
+    {
+      "title": "Prepare for the next one",
+      "text": "What's still open from the last [meeting name]? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Meetings"
+    },
+    {
+      "name": "TeamsMessages"
+    },
+    {
+      "name": "People"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Catch Me Up",
+  "description": "Reads your own email, Teams chats and meetings and tells you what needs you, with replies owed, decisions made and deadlines coming, each linked to where it came from. For people with the paid Microsoft Copilot licence.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "What needs me today?",
+      "text": "What needs me today?"
+    },
+    {
+      "title": "Back from leave",
+      "text": "I've been on leave since [date]. What did I miss, and what needs me first? "
+    },
+    {
+      "title": "Catch up on a project",
+      "text": "Catch me up on [project] over the last two weeks. "
+    },
+    {
+      "title": "Before a meeting",
+      "text": "I'm meeting [person] later. What's open between us? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "Email"
+    },
+    {
+      "name": "TeamsMessages"
+    },
+    {
+      "name": "Meetings"
+    },
+    {
+      "name": "People"
+    }
+  ]
+}

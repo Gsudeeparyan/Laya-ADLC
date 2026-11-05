@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "22dffa22-0b4f-53d1-ab3c-7e62f243aed5",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Excel Expert for SharePoi",
+    "full": "Laya Excel Expert for SharePoint"
+  },
+  "description": {
+    "short": "Works directly on Excel files in SharePoint and OneDrive - paste the link, no do",
+    "full": "Works directly on Excel files in SharePoint and OneDrive - paste the link, no downloading. Answers questions about the data, makes exact changes that keep every formula and total working, saves in place (version history keeps the old copy), and never shows the AI real personal data - only tokens like PERSON_001. Can also make and restore PII-free copies."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

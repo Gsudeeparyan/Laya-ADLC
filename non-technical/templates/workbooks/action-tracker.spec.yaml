@@ -1,0 +1,126 @@
+adlc_spec: 1
+workbook:
+  title: Action Tracker
+  template: action-tracker
+  purpose: >-
+    Keep track of actions from meetings and projects - who is doing what, by when, and
+    whether it is done. Overdue and due-soon actions are highlighted automatically.
+  owner: ""
+  how_to_use:
+    - "Go to the 'Actions' sheet and add one row per action. Leave the ID blank - it is filled in for you."
+    - "Pick the Status from the dropdown. Keep it up to date as work moves on."
+    - "Look at the 'Days left' and 'Flag' columns: red means overdue, amber means due soon."
+    - "The 'Dashboard' sheet counts actions by status and draws a chart for you."
+    - "Need a new column or option? Upload this file to the Laya Excel Expert agent and ask in plain words."
+
+parameters:
+  - key: due_soon_days
+    label: Days before the due date that an action counts as 'Due soon'
+    type: integer
+    value: 7
+    description: Change this number if you want earlier or later warnings.
+
+sheets:
+  - name: Actions
+    description: One row per action.
+    tables:
+      - key: actions
+        name: tblActions
+        id_prefix: ACT-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically. Use it to refer to an action, e.g. 'ACT-004'.
+          - key: action
+            header: Action
+            type: long_text
+            required: true
+            width: 50
+            description: What needs to be done, starting with a verb. For example 'Send the updated rota to the team'.
+          - key: owner
+            header: Owner
+            type: text
+            required: true
+            description: The one person responsible for getting it done.
+          - key: source
+            header: Source
+            type: text
+            description: Where the action came from, e.g. 'Team meeting 06/10/2026'.
+          - key: raised_on
+            header: Raised on
+            type: date
+            description: The date the action was agreed.
+          - key: due_date
+            header: Due date
+            type: date
+            required: true
+            description: The date it should be finished by.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Not started, In progress, Blocked, Done]
+            required: true
+            description: Where the action is now.
+            highlights:
+              - {when: equals, value: Done, color: green}
+              - {when: equals, value: Blocked, color: red}
+          - key: notes
+            header: Notes
+            type: long_text
+            width: 40
+            description: Anything useful - progress, blockers, links.
+          - key: days_left
+            header: Days left
+            type: formula
+            formula: '=IF(OR([@[Due date]]="",[@Status]="Done"),"",[@[Due date]]-TODAY())'
+            number_format: '0'
+            description: Days until the due date. Negative means overdue.
+          - key: flag
+            header: Flag
+            type: formula
+            formula: '=IF([@Status]="Done","Done",IF([@[Due date]]="","",IF([@[Due date]]<TODAY(),"Overdue",IF([@[Due date]]-TODAY()<=p_due_soon_days,"Due soon","On track"))))'
+            description: A quick warning based on the due date and status.
+            highlights:
+              - {when: equals, value: Overdue, color: red}
+              - {when: equals, value: Due soon, color: amber}
+              - {when: equals, value: On track, color: green}
+        rows:
+          - action: Example - delete this row when you add your own actions
+            owner: Your name
+            source: Template example
+            raised_on: 2026-10-06
+            due_date: 2026-10-20
+            status: Not started
+
+  - name: Dashboard
+    description: Counts of actions by status, with a chart. Fills itself in.
+    tables:
+      - key: status_summary
+        name: tblStatusSummary
+        rows_from: {table: actions, column: status}
+        columns:
+          - key: status
+            header: Status
+            type: text
+            description: Each status from the dropdown list.
+          - key: count
+            header: Actions
+            type: formula
+            formula: '=COUNTIF(tblActions[Status],[@Status])'
+            number_format: '0'
+            description: How many actions have this status.
+          - key: overdue
+            header: Overdue
+            type: formula
+            formula: '=COUNTIFS(tblActions[Status],[@Status],tblActions[Flag],"Overdue")'
+            number_format: '0'
+            description: How many of them are overdue.
+    charts:
+      - key: status_chart
+        type: column
+        title: Actions by status
+        table: status_summary
+        category: status
+        values: [count]
+        anchor: E2

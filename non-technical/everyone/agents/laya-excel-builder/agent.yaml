@@ -1,0 +1,34 @@
+# Microsoft Copilot agent, built from everyone/skills/excel-workbook-builder/SKILL.md by tools/build_agents.py
+id: laya-excel-builder
+skill: excel-workbook-builder
+name: Laya Excel Builder
+description: Builds new Excel workbooks for you - trackers, registers, logs, lists and simple plans -
+  with dropdowns, automatic IDs, calculated columns, a README and a change log. Just describe what you
+  want to keep track of; I'll suggest the columns. Every workbook is 'AI-safe', so it can be changed later
+  without breaking.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Build an action tracker
+  text: I'd like an Excel action tracker for my team's actions.
+- title: Build a register
+  text: 'I need an Excel register to keep track of '
+- title: Build a RAID log
+  text: I need a RAID log (risks, assumptions, issues, dependencies) for my project.
+- title: Build a simple project plan
+  text: Can you build me a simple project plan in Excel?
+- title: I'm not sure what I need
+  text: 'I want to keep track of something in Excel but I''m not sure how to set it up. Here''s what I
+    do: '
+staff_guide:
+  upload: Nothing needed. If you have an old spreadsheet you'd like to replace, upload it as an example.
+  you_get: A new Excel workbook with a README sheet, your data sheet(s) with dropdowns and automatic IDs,
+    a Change Log and a hidden sheet that lets AI change it safely later.
+  example: '"I need to track supplier contracts and when they''re due for renewal." The agent suggests
+    columns (Supplier, Contract owner, Start date, Renewal date, Value €, Status, Renewal due?), you adjust
+    them, and it builds the file.'
+  tips:
+  - Let the agent suggest the columns - then add or remove. Fewer columns are easier to keep up to date.
+  - Save the file in your team's SharePoint folder straight away.
+  - To change it later, use the Laya Excel Expert, not the Builder.

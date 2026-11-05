@@ -1,0 +1,33 @@
+# Microsoft Copilot agent, built from everyone/skills/start-here/SKILL.md by tools/build_agents.py
+id: laya-ai-helper
+skill: start-here
+name: Laya AI Helper (Start Here)
+description: 'Not sure which AI agent to use? Start here. Tell me what you''re trying to get done, in
+  your own words, and I''ll point you to the right Laya agent and write your first message for it. I can
+  also explain the basics: uploading files, saving results and what not to share.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Which agent should I use?
+  text: 'I''m not sure which agent to use. Here''s what I''m trying to do: '
+- title: Help with a spreadsheet
+  text: I need help with a spreadsheet but I'm not sure where to start.
+- title: Help me write something
+  text: I need to write something and want the right agent to help me.
+- title: Write a better request
+  text: 'Can you help me turn my request into a clear message for an agent? Here it is: '
+- title: How do agents work?
+  text: I'm new to Copilot agents. How do I upload a file and save what the agent gives me?
+- title: What can I share?
+  text: What information is OK to share with an AI agent, and what isn't?
+staff_guide:
+  upload: Nothing needed. Just describe what you're trying to do.
+  you_get: The name of the best agent for the job, and a ready-to-paste first message for it.
+  example: '"I have to send my manager a list of everything our team is waiting on from other departments."
+    The helper suggests the Laya Excel Builder for a tracker, plus the Laya Comms Writer for the email,
+    and writes the first message for each.'
+  tips:
+  - Start here whenever you're unsure - there are no silly questions.
+  - 'Describe the job, not the tool: ''I need to keep track of...'' works better than ''I need a pivot
+    table''.'

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "c6739cff-3aee-5fbe-89c2-8d360459bc67",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya PII Guard",
+    "full": "Laya PII Guard"
+  },
+  "description": {
+    "short": "Checks Excel, Word, CSV or pasted text for personal data - names, PPS numbers, d",
+    "full": "Checks Excel, Word, CSV or pasted text for personal data - names, PPS numbers, dates of birth, contact details, Eircodes, bank and card numbers, member/policy numbers and health details - and removes it. Get a clean copy safe for any AI tool (with a private key to put real values back), an anonymised copy for sharing, or an answer about your data without exposing anyone."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

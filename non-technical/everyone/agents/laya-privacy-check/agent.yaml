@@ -1,0 +1,29 @@
+# Microsoft Copilot agent, built from everyone/skills/privacy-check/SKILL.md by tools/build_agents.py
+id: laya-privacy-check
+skill: privacy-check
+name: Laya Privacy & AI Check
+description: A quick, friendly check before you share data, start something new, or use AI for something
+  you're unsure about. Simple questions, a green/amber/red result with reasons, practical
+  safeguards, and when to talk to the Data Protection Officer or the AI owner. Screening only - not legal advice.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Can I share this?
+  text: I want to share some data. Can you check whether it's OK?
+- title: New project or process
+  text: I'm starting something new that may use personal information.
+- title: Can I use AI for this?
+  text: I want to use AI or Copilot for something and I'm not sure if it's OK.
+- title: New supplier or tool
+  text: We're bringing in a new tool or supplier that will handle our data.
+staff_guide:
+  upload: Nothing - and please never upload or paste the actual personal data.
+  you_get: A green, amber or red result with reasons, practical safeguards, and a summary you can forward
+    to your manager or the Data Protection Officer.
+  example: '"I want to send a list of members who complained last month to an outside research company."
+    A few questions later the result is Red: talk to the Data Protection Officer first, as a DPIA is likely
+    needed.'
+  tips:
+  - This is a screening, not legal advice or approval.
+  - When in doubt, it errs on the side of caution. A quick email to the DPO is cheap.

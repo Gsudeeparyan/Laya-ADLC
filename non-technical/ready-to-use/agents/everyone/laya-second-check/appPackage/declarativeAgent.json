@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Second Check",
+  "description": "A second pair of eyes before you send or use something, especially if AI wrote it. Checks facts and figures against your source, recalculates the numbers, and spots invented details, personal data and promises Laya can't stand over. You get a clear verdict and the exact fixes.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Check this against the source",
+      "text": "I'll upload a draft and the document it's based on. Can you check the draft is right?"
+    },
+    {
+      "title": "Check an AI answer",
+      "text": "Copilot gave me this answer. What should I check before I use it? "
+    },
+    {
+      "title": "Check the numbers",
+      "text": "I'll upload a report. Can you recalculate the figures and tell me if any are wrong?"
+    },
+    {
+      "title": "Before I send this",
+      "text": "This is going to a member. Is there anything I should fix before it goes? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

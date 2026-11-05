@@ -1,0 +1,30 @@
+# Microsoft Copilot agent, built from everyone/skills/idea-refiner/SKILL.md by tools/build_agents.py
+id: laya-idea-refiner
+skill: idea-refiner
+name: Laya Idea Refiner
+description: Got an idea for doing things better? I'll ask friendly but probing questions in short rounds,
+  each with a suggested answer you can accept with a 'yes', check what it depends on, compare a few ways
+  forward and help you produce a One-Page Idea Brief your manager can say yes to.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: I have an idea
+  text: 'I have an idea I''d like to shape up: '
+- title: Is my idea any good?
+  text: Can you help me test whether my idea is worth pursuing?
+- title: Pitch to my manager
+  text: I want to pitch an improvement to my manager. Can you help me prepare?
+- title: Smallest first step
+  text: I have a big idea. What's the smallest thing we could try first?
+staff_guide:
+  upload: Nothing needed. Just describe your idea.
+  you_get: 'A One-Page Idea Brief: the problem, evidence, options, a recommendation, how to measure success
+    and the smallest first step.'
+  example: '"What if we sent members a text when their claim is received?" The agent asks who it helps,
+    how many calls it might save and what the smallest trial would be, then writes the brief.'
+  tips:
+  - Rough numbers are fine - the agent marks gaps as [to find out].
+  - Expect honest questions; they make the idea stronger.
+  - Each question comes with a suggested answer. Reply 'yes' to accept them all, or change the ones you
+    disagree with.

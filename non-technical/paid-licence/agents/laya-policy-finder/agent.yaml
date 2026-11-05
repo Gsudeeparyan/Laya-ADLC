@@ -1,0 +1,31 @@
+# Microsoft Copilot agent, built from paid-licence/skills/policy-finder/SKILL.md by tools/build_agents.py
+# IT: replace the example site below with Laya's approved policy sites before building or sharing this agent.
+id: laya-policy-finder
+skill: policy-finder
+name: Laya Policy Finder
+description: Answers "what does our policy or procedure say?" from Laya's approved SharePoint sites only,
+  quoting the document and section, and tells you plainly when the answer isn't there. For people with the
+  paid Microsoft Copilot licence.
+capabilities:
+  code_interpreter: false
+  web_search: false
+  sharepoint_sites:
+  - https://LAYA-TENANT.sharepoint.com/sites/APPROVED-POLICIES
+ground_only_in_knowledge: true
+conversation_starters:
+- title: What does it say?
+  text: 'What does our policy say about '
+- title: Where's the procedure?
+  text: 'Where can I find the procedure for '
+- title: What's changed?
+  text: 'What changed in the latest version of '
+- title: Is this right?
+  text: 'A colleague told me this. Do our documents back it up? '
+staff_guide:
+  upload: Nothing. It searches Laya's approved sites, and only the parts you already have access to.
+  you_get: A short answer, the exact wording with a link to the document, and who to ask if it needs interpreting.
+  example: Ask what the procedure says about working from abroad. You get the two lines that matter and a link. If
+    it isn't covered, it says so and doesn't guess.
+  tips:
+  - Click the link and read the wording before you rely on it.
+  - It explains what a document says. Decisions on a real case stay with the people who make them.

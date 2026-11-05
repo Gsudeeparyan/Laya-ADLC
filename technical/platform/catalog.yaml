@@ -1,0 +1,217 @@
+# ADLC skill catalog - the single list of every skill and the Copilot agent built from it.
+# tools/validate_skills.py checks this file against the skills and agents in each licence tier.
+library: Laya-ADLC - Agentic Development Life Cycle skill library (Laya Healthcare)
+version: 2.0.0
+track: non-technical          # developer skills are listed in technical/skills-and-agents/
+platform: "Microsoft Copilot agents"
+tiers:
+  everyone: Works on free Copilot Chat and on the paid licence
+  paid-licence: Needs the paid Microsoft Copilot licence
+
+batches:
+  A: Start here and Excel
+  B: Documents and communication
+  C: Planning, design and ideas
+
+skills:
+  # ---------------------------------------------------------------- A: start + Excel
+  - id: start-here
+    tier: everyone
+    agent: laya-ai-helper
+    name: Laya AI Helper (Start Here)
+    category: start
+    batch: A
+    audience: Everyone - the front door to all the other agents
+    templates: []
+  - id: excel-workbook-builder
+    tier: everyone
+    agent: laya-excel-builder
+    name: Laya Excel Builder
+    category: excel
+    batch: A
+    audience: Anyone who needs a new tracker, register, log or plan in Excel
+    templates: [action-tracker, raid-log, project-plan, simple-register]
+  - id: excel-expert
+    tier: everyone
+    agent: laya-excel-expert
+    name: Laya Excel Expert
+    category: excel
+    batch: A
+    audience: Anyone who needs to add to, edit, fix or tidy any workbook (upload and download)
+    templates: []
+  - id: excel-expert-sharepoint
+    tier: everyone
+    agent: laya-excel-expert-sharepoint
+    name: Laya Excel Expert for SharePoint
+    category: excel
+    batch: A
+    audience: Anyone working on workbooks in SharePoint/OneDrive - edits in place, AI only sees tokens
+    deploy: it            # uses actions (backend/), so IT deploys it as an app package
+    templates: []
+  - id: pii-guard
+    tier: everyone
+    agent: laya-pii-guard
+    name: Laya PII Guard
+    category: governance
+    batch: A
+    audience: Anyone handling files with member, customer or staff personal data
+    templates: []
+  - id: excel-explainer
+    tier: everyone
+    agent: laya-excel-explainer
+    name: Laya Excel Explainer
+    category: excel
+    batch: A
+    audience: Anyone handed a workbook they don't understand, or stuck on a formula
+    templates: []
+  - id: excel-data-cleaner
+    tier: everyone
+    agent: laya-excel-data-cleaner
+    name: Laya Excel Data Cleaner
+    category: excel
+    batch: A
+    audience: Anyone working with messy exports, duplicates or several files to combine
+    templates: []
+  - id: excel-insights-reporter
+    tier: everyone
+    agent: laya-excel-insights
+    name: Laya Excel Insights
+    category: excel
+    batch: A
+    audience: Anyone who needs summaries, charts and findings from a spreadsheet
+    templates: []
+
+  - id: prompt-coach
+    tier: everyone
+    agent: laya-prompt-coach
+    name: Laya Prompt Coach
+    category: start
+    batch: A
+    audience: Anyone who wants better answers from Copilot
+    templates: []
+  - id: second-check
+    tier: everyone
+    agent: laya-second-check
+    name: Laya Second Check
+    category: governance
+    batch: A
+    audience: Anyone about to send or use something, especially if AI wrote it
+    templates: []
+
+  # ---------------------------------------------------------------- B: documents + comms
+  - id: document-summariser
+    tier: everyone
+    agent: laya-document-summariser
+    name: Laya Document Summariser
+    category: documents
+    batch: B
+    audience: Anyone reading long documents, policies or two versions of the same file
+    templates: []
+  - id: document-coauthor
+    tier: everyone
+    agent: laya-document-coauthor
+    name: Laya Document Co-author
+    category: documents
+    batch: B
+    audience: Anyone writing a briefing note, proposal, report or guide
+    templates: [briefing-note, proposal]
+  - id: comms-writer
+    tier: everyone
+    agent: laya-comms-writer
+    name: Laya Comms Writer
+    category: communication
+    batch: B
+    audience: Anyone writing emails, updates, announcements or customer letters
+    templates: []
+  - id: meeting-to-actions
+    tier: everyone
+    agent: laya-meeting-actions
+    name: Laya Meeting Actions
+    category: communication
+    batch: B
+    audience: Anyone who runs or attends meetings
+    templates: [action-tracker]
+  - id: presentation-builder
+    tier: everyone
+    agent: laya-presentation-builder
+    name: Laya Presentation Builder
+    category: documents
+    batch: B
+    audience: Anyone who needs a clear slide deck
+    templates: []
+
+  # ---------------------------------------------------------------- C: planning, design, ideas
+  - id: idea-refiner
+    tier: everyone
+    agent: laya-idea-refiner
+    name: Laya Idea Refiner
+    category: planning
+    batch: C
+    audience: Anyone with an idea for doing things better
+    templates: [idea-brief]
+  - id: process-sop-builder
+    tier: everyone
+    agent: laya-process-sop-builder
+    name: Laya Process & SOP Builder
+    category: planning
+    batch: C
+    audience: Team leads and anyone documenting or improving how work gets done
+    templates: [sop]
+  - id: project-planner
+    tier: everyone
+    agent: laya-project-planner
+    name: Laya Project Planner
+    category: planning
+    batch: C
+    audience: Anyone running a project, big or small
+    templates: [project-plan, raid-log]
+  - id: requirements-writer
+    tier: everyone
+    agent: laya-requirements-writer
+    name: Laya Requirements Writer
+    category: planning
+    batch: C
+    audience: Business staff asking IT or a supplier to build or change something
+    templates: []
+  - id: agile-ceremony-coach
+    tier: everyone
+    agent: laya-agile-coach
+    name: Laya Agile Coach
+    category: planning
+    batch: C
+    audience: Teams working in sprints, and anyone facilitating planning or retros
+    templates: []
+  - id: privacy-check
+    tier: everyone
+    agent: laya-privacy-check
+    name: Laya Privacy & AI Check
+    category: governance
+    batch: C
+    audience: Anyone about to share data or start something that uses personal data
+    templates: []
+
+  # ---------------------------------------------------------------- paid licence only
+  - id: catch-me-up
+    tier: paid-licence
+    agent: laya-catch-me-up
+    name: Laya Catch Me Up
+    category: communication
+    batch: C
+    audience: Licensed staff catching up on email, Teams and meetings
+    templates: []
+  - id: meeting-recap
+    tier: paid-licence
+    agent: laya-meeting-recap
+    name: Laya Meeting Recap
+    category: communication
+    batch: C
+    audience: Licensed staff who want minutes and actions from a Teams meeting
+    templates: []
+  - id: policy-finder
+    tier: paid-licence
+    agent: laya-policy-finder
+    name: Laya Policy Finder
+    category: documents
+    batch: C
+    audience: Licensed staff looking up what an approved Laya document says
+    templates: []

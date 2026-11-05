@@ -1,0 +1,30 @@
+# Microsoft Copilot agent, built from paid-licence/skills/meeting-recap/SKILL.md by tools/build_agents.py
+id: laya-meeting-recap
+skill: meeting-recap
+name: Laya Meeting Recap
+description: Reads a Teams meeting you attended, with nothing to upload, and gives you the decisions, a clear
+  action list (what, who, by when), open questions and a ready-to-send follow-up email. For people with the
+  paid Microsoft Copilot licence.
+capabilities:
+  code_interpreter: false
+  web_search: false
+  meetings: true
+  teams_messages: true
+  people: true
+conversation_starters:
+- title: My last meeting
+  text: What did we decide in my last meeting, and who's doing what?
+- title: Follow-up email
+  text: 'Write the follow-up email for [meeting name]. '
+- title: Minutes
+  text: 'I need proper minutes for [meeting name] on [date]. '
+- title: Prepare for the next one
+  text: 'What''s still open from the last [meeting name]? '
+staff_guide:
+  upload: Nothing. Tell it which meeting. It needs the meeting to have been transcribed.
+  you_get: A summary, decisions, an action table, open questions and a follow-up email ready for you to check and send.
+  example: After the weekly team meeting, ask for the actions. You get five actions with owners and dates, and it
+    asks about the two that had no owner.
+  tips:
+  - No transcript means it can't tell what was said. Use the free Laya Meeting Actions with your notes instead.
+  - Transcripts get names and numbers wrong, so check those before you send.

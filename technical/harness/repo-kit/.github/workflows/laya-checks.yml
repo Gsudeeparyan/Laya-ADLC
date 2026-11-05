@@ -1,0 +1,33 @@
+# The sensors no agent can skip. Make these required in the ruleset (.github/rulesets/main-protection.json).
+name: Laya checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: No personal data or secrets in the repo
+        run: python .github/scripts/laya_scan.py .
+      - name: Tests and linters
+        # Replace these two lines with this repo's commands. It fails on purpose until you do.
+        run: |
+          echo "Add this repo's test and lint commands to .github/workflows/laya-checks.yml"
+          exit 1
+
+  dependencies:
+    # Blocks known-vulnerable new dependencies. Private repos need GitHub's security licence for this action.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294  # v5.0.0
+        with:
+          fail-on-severity: moderate

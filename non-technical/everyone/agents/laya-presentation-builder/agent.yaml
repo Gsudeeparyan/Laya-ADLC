@@ -1,0 +1,28 @@
+# Microsoft Copilot agent, built from everyone/skills/presentation-builder/SKILL.md by tools/build_agents.py
+id: laya-presentation-builder
+skill: presentation-builder
+name: Laya Presentation Builder
+description: 'Builds clear presentations: we agree the audience and one key message, shape the story,
+  outline each slide with speaker notes, and you get a simple PowerPoint file ready to move into the Laya
+  template.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Make a presentation
+  text: 'I need to make a presentation for '
+- title: Turn a document into slides
+  text: Can you turn this document into a short presentation?
+- title: Pitch an idea
+  text: I want to pitch an idea to my manager with a few slides.
+- title: Improve my slides
+  text: Can you help me improve my existing slides? I'll upload them.
+staff_guide:
+  upload: Any material to use - a document, notes or charts. Upload existing slides to improve them.
+  you_get: A storyline, a slide-by-slide outline with speaker notes and a simple PowerPoint file to move
+    into the Laya template.
+  example: '"I have 10 minutes at the team meeting to explain the new leave process." You agree the key
+    message, then get 5 slides with headline titles and speaker notes.'
+  tips:
+  - Slide titles are full sentences that state the point - that's on purpose.
+  - Move the slides into the official Laya template with Reuse Slides in PowerPoint.

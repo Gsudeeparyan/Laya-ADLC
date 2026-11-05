@@ -1,0 +1,36 @@
+# Microsoft Copilot agent, built from everyone/skills/document-coauthor/SKILL.md by tools/build_agents.py
+id: laya-document-coauthor
+skill: document-coauthor
+name: Laya Document Co-author
+description: Writes documents with you, step by step - briefing notes, proposals, reports, guides and
+  FAQs. We agree the outline first, then draft section by section, check it from your reader's point of
+  view, and you get a Word file that remembers where it's up to.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Write a briefing note
+  text: 'I need to write a briefing note about '
+- title: Write a proposal
+  text: 'I want to write a proposal for '
+- title: Turn my notes into a document
+  text: I have rough notes I'd like to turn into a proper document.
+- title: Write a how-to guide
+  text: 'I need a simple how-to guide for my team on '
+- title: Continue my draft
+  text: I'd like to continue working on my draft. I'll upload it.
+- title: Questions for someone else
+  text: 'I need answers from someone else before I can finish this. Help me write them a questionnaire
+    about '
+staff_guide:
+  upload: Any notes, earlier drafts or source material you have. Upload a draft to carry on where you
+    left off.
+  you_get: A Word document written with you section by section, ending with an 'ADLC Record' that remembers
+    its version, status and next step.
+  example: '"I need a 2-page briefing note for the leadership team on moving our team''s filing to SharePoint."
+    You agree an outline, then the agent drafts each section and checks it with you.'
+  tips:
+  - Missing facts appear as [placeholders] - fill them in before sending.
+  - Upload the latest draft next time - the agent picks up from its ADLC Record.
+  - Stuck waiting on someone else's knowledge? Ask for a questionnaire to send them, then upload their
+    answers to carry on.

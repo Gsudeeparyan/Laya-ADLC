@@ -1,0 +1,9 @@
+{
+  "chat.tools.global.autoApprove": false,
+  "chat.tools.edits.autoApprove": {
+    "**/.env": false,
+    "**/.env.*": false,
+    ".github/**": false,
+    ".vscode/**": false
+  }
+}

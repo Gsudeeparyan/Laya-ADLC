@@ -1,0 +1,9 @@
+{
+  "name": "laya-engineering",
+  "description": "Laya's developer skills and role agents for GitHub Copilot.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Laya Healthcare"
+  },
+  "license": "SEE LICENSE IN THIRD-PARTY-NOTICES.md"
+}

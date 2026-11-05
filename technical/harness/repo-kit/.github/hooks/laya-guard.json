@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "bash": "sh .github/hooks/laya-guard.sh",
+        "powershell": "powershell -NoProfile -File .github/hooks/laya-guard.ps1",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

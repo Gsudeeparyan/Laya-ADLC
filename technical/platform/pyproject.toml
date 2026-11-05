@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adlc-workbook"
+version = "1.0.0"
+description = "ADLC self-describing Excel workbooks: build, change and validate workbooks so AI agents never lose their structure."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary - Laya Healthcare internal use" }
+dependencies = [
+    "openpyxl>=3.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pillow>=10",
+    "python-docx>=1.1",
+    "jsonschema>=4",
+]
+
+[project.scripts]
+adlc-wb = "adlc_workbook.cli:main"
+adlc-pii = "adlc_pii.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", ".", "tools"]

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Idea Refiner",
+  "description": "Got an idea for doing things better? I'll ask friendly but probing questions in short rounds, each with a suggested answer you can accept with a 'yes', check what it depends on, compare a few ways forward and help you produce a One-Page Idea Brief your manager can say yes to.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "I have an idea",
+      "text": "I have an idea I'd like to shape up: "
+    },
+    {
+      "title": "Is my idea any good?",
+      "text": "Can you help me test whether my idea is worth pursuing?"
+    },
+    {
+      "title": "Pitch to my manager",
+      "text": "I want to pitch an improvement to my manager. Can you help me prepare?"
+    },
+    {
+      "title": "Smallest first step",
+      "text": "I have a big idea. What's the smallest thing we could try first?"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

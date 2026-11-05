@@ -1,0 +1,210 @@
+adlc_spec: 1
+workbook:
+  title: Project Plan
+  template: project-plan
+  purpose: >-
+    A simple project plan: the tasks, who does them and when, the key milestones, and who
+    is involved in what (RACI). Late or at-risk work is flagged red or amber automatically.
+  owner: ""
+  how_to_use:
+    - "List the work on the 'Tasks' sheet, one row per task, with a start and end date."
+    - "Update '% complete' and 'Status' each week. The RAG column shows Red (late), Amber (at risk) or Green."
+    - "Put the big checkpoints on the 'Milestones' sheet."
+    - "Use the 'RACI' sheet to agree who is Responsible, Accountable, Consulted and Informed for each deliverable."
+    - "For a weekly status report, upload this file to the Laya Project Planner agent and ask for 'this week's status update'."
+
+parameters:
+  - key: amber_days
+    label: Days before the end date that unfinished work turns Amber
+    type: integer
+    value: 5
+    description: Tasks not finished and due within this many days are shown as Amber.
+
+sheets:
+  - name: Tasks
+    description: One row per task.
+    tables:
+      - key: tasks
+        name: tblTasks
+        id_prefix: T-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: workstream
+            header: Workstream
+            type: text
+            description: The part of the project this belongs to, e.g. 'Training' or 'Comms'.
+          - key: task
+            header: Task
+            type: long_text
+            required: true
+            width: 44
+            description: What needs to be done.
+          - key: owner
+            header: Owner
+            type: text
+            required: true
+            description: The one person responsible.
+          - key: start
+            header: Start
+            type: date
+            required: true
+            description: When the work starts.
+          - key: end
+            header: End
+            type: date
+            required: true
+            description: When it must be finished.
+          - key: working_days
+            header: Working days
+            type: formula
+            formula: '=IF(OR([@Start]="",[@End]=""),"",NETWORKDAYS([@Start],[@End]))'
+            number_format: '0'
+            description: Monday to Friday days between Start and End.
+          - key: percent_complete
+            header: '% complete'
+            type: percent
+            min: 0
+            max: 1
+            description: How much is done, e.g. 50%.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Not started, In progress, Blocked, Done]
+            required: true
+            description: Where the task is now.
+          - key: rag
+            header: RAG
+            type: formula
+            formula: '=IF([@Status]="Done","Green",IF([@End]="","",IF([@End]<TODAY(),"Red",IF(OR([@Status]="Blocked",[@End]-TODAY()<=p_amber_days),"Amber","Green"))))'
+            description: Red = past the end date and not done. Amber = blocked or due soon. Green = on track or done.
+            highlights:
+              - {when: equals, value: Red, color: red}
+              - {when: equals, value: Amber, color: amber}
+              - {when: equals, value: Green, color: green}
+          - key: depends_on
+            header: Depends on
+            type: text
+            description: IDs of tasks that must finish first, e.g. 'T-002, T-005'.
+          - key: notes
+            header: Notes
+            type: long_text
+            width: 36
+            description: Progress, blockers, links.
+        rows:
+          - workstream: Example
+            task: Example task - delete this row when you add your own
+            owner: Your name
+            start: 2026-10-06
+            end: 2026-10-17
+            percent_complete: 0
+            status: Not started
+
+  - name: Milestones
+    description: The key checkpoints and their target dates.
+    tables:
+      - key: milestones
+        name: tblMilestones
+        id_prefix: M-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: milestone
+            header: Milestone
+            type: text
+            required: true
+            width: 40
+            description: The checkpoint, e.g. 'Training complete'.
+          - key: target_date
+            header: Target date
+            type: date
+            required: true
+            description: When it should be reached.
+          - key: owner
+            header: Owner
+            type: text
+            description: Who is accountable for reaching it.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Planned, At risk, Achieved, Missed]
+            required: true
+            description: Where it stands.
+            highlights:
+              - {when: equals, value: Achieved, color: green}
+              - {when: equals, value: At risk, color: amber}
+              - {when: equals, value: Missed, color: red}
+          - key: days_to_go
+            header: Days to go
+            type: formula
+            formula: '=IF(OR([@[Target date]]="",[@Status]="Achieved"),"",[@[Target date]]-TODAY())'
+            number_format: '0'
+            description: Days until the target date. Negative means it has passed.
+
+  - name: RACI
+    description: Who is Responsible, Accountable, Consulted and Informed for each deliverable.
+    tables:
+      - key: raci
+        name: tblRACI
+        id_prefix: R-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: deliverable
+            header: Deliverable or decision
+            type: text
+            required: true
+            width: 40
+            description: The piece of work or decision.
+          - key: responsible
+            header: Responsible
+            type: text
+            description: Does the work.
+          - key: accountable
+            header: Accountable
+            type: text
+            required: true
+            description: Signs it off. Only one person.
+          - key: consulted
+            header: Consulted
+            type: text
+            description: Gives input before it is done.
+          - key: informed
+            header: Informed
+            type: text
+            description: Is told once it is done.
+
+  - name: Dashboard
+    description: Tasks by status, with a chart. Fills itself in.
+    tables:
+      - key: task_summary
+        name: tblTaskSummary
+        rows_from: {table: tasks, column: status}
+        columns:
+          - key: status
+            header: Status
+            type: text
+          - key: tasks
+            header: Tasks
+            type: formula
+            formula: '=COUNTIF(tblTasks[Status],[@Status])'
+            number_format: '0'
+          - key: red
+            header: Red
+            type: formula
+            formula: '=COUNTIFS(tblTasks[Status],[@Status],tblTasks[RAG],"Red")'
+            number_format: '0'
+    charts:
+      - key: tasks_by_status
+        type: column
+        title: Tasks by status
+        table: task_summary
+        category: status
+        values: [tasks]
+        anchor: E2

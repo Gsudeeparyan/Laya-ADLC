@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "a2ba0bfa-f69b-59d4-b670-6010be3cf53e",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Document Summariser",
+    "full": "Laya Document Summariser"
+  },
+  "description": {
+    "short": "Summarises long documents (Word, PDF, PowerPoint) at the length you need, with e",
+    "full": "Summarises long documents (Word, PDF, PowerPoint) at the length you need, with every point linked to its section or page so you can check it. Compares two versions and explains what changed, and pulls out actions, deadlines, obligations and figures."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

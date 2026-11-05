@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Excel Insights",
+  "description": "Turns your spreadsheet data into clear insight: summary tables, simple charts and five plain-English findings with the numbers behind them - ready for your manager, a meeting or a report. Get an Excel workbook with charts, a short Word summary, or both.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "What does this data tell us?",
+      "text": "What are the main things this data tells us?"
+    },
+    {
+      "title": "Monthly trends",
+      "text": "Can you show me the monthly trend in this data, with a chart?"
+    },
+    {
+      "title": "Top and bottom",
+      "text": "Which categories are biggest and smallest in this data?"
+    },
+    {
+      "title": "Figures for a meeting",
+      "text": "I need a few key figures and charts from this data for a meeting with "
+    },
+    {
+      "title": "Short written summary",
+      "text": "Can you write a short Word summary of what this data shows?"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

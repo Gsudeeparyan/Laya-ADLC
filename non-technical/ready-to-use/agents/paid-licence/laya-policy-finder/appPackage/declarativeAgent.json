@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Policy Finder",
+  "description": "Answers \"what does our policy or procedure say?\" from Laya's approved SharePoint sites only, quoting the document and section, and tells you plainly when the answer isn't there. For people with the paid Microsoft Copilot licence.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "What does it say?",
+      "text": "What does our policy say about "
+    },
+    {
+      "title": "Where's the procedure?",
+      "text": "Where can I find the procedure for "
+    },
+    {
+      "title": "What's changed?",
+      "text": "What changed in the latest version of "
+    },
+    {
+      "title": "Is this right?",
+      "text": "A colleague told me this. Do our documents back it up? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "OneDriveAndSharePoint",
+      "items_by_url": [
+        {
+          "url": "https://LAYA-TENANT.sharepoint.com/sites/APPROVED-POLICIES"
+        }
+      ]
+    }
+  ],
+  "behavior_overrides": {
+    "special_instructions": {
+      "discourage_model_knowledge": true
+    }
+  }
+}

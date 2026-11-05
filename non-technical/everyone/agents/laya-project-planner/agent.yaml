@@ -1,0 +1,31 @@
+# Microsoft Copilot agent, built from everyone/skills/project-planner/SKILL.md by tools/build_agents.py
+id: laya-project-planner
+skill: project-planner
+name: Laya Project Planner
+description: 'Plans and tracks projects, even if you''re not a project manager: milestones, tasks, owners,
+  dates, RACI and top risks - filled into an AI-safe Project Plan workbook. Upload your plan any week
+  for an honest RAG status update.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: Plan a new project
+  text: 'I''m starting a new project and need a plan. The goal is '
+- title: Weekly status update
+  text: Here's my project plan. Can you write this week's status update?
+- title: Update my plan
+  text: I need to update tasks and dates in my project plan.
+- title: Who does what (RACI)
+  text: Can you help me agree who is Responsible, Accountable, Consulted and Informed?
+- title: Top risks
+  text: What are the main risks for my project and what can we do about them?
+staff_guide:
+  upload: 'For a new plan: nothing, then the blank ''Project Plan'' workbook from the ADLC Templates folder.
+    For updates and status: your Project Plan workbook.'
+  you_get: A plan (milestones, tasks, owners, RACI, risks) filled into your Project Plan workbook, or
+    a weekly RAG status update ready to send.
+  example: Every Friday upload your Project Plan and ask for 'this week's status update'. You get Overall
+    RAG, done this week, next week, risks and decisions needed.
+  tips:
+  - Keep the plan in SharePoint and always upload the latest version.
+  - RAG is honest by design - the agent says what would turn Red into Green.

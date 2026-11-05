@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.9/schema.json",
+  "version": "v1.9",
+  "name": "Laya Comms Writer",
+  "description": "Writes clear, friendly emails, Teams posts, team and leadership updates and announcements - in plain English with the right tone. Also checks letters and messages for plain English: jargon, long sentences and missing information.",
+  "instructions": "$[file('instruction.txt')]",
+  "conversation_starters": [
+    {
+      "title": "Write an email",
+      "text": "Can you help me write an email to "
+    },
+    {
+      "title": "Reply to an email",
+      "text": "Help me reply to this email: "
+    },
+    {
+      "title": "Update for my manager",
+      "text": "I need to write a short update for my manager on "
+    },
+    {
+      "title": "Announce something",
+      "text": "I need to announce something to my team: "
+    },
+    {
+      "title": "Is this clear?",
+      "text": "Can you check this text for plain English and make it clearer? "
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ]
+}

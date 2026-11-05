@@ -1,0 +1,29 @@
+# Microsoft Copilot agent, built from everyone/skills/requirements-writer/SKILL.md by tools/build_agents.py
+id: laya-requirements-writer
+skill: requirements-writer
+name: Laya Requirements Writer
+description: Helps you tell IT or a supplier exactly what you need. Turns a business need into a clear
+  requirements document with testable requirements, user stories, priorities and open questions - plus
+  a user-story file for Azure DevOps or Jira.
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: I need IT to build something
+  text: 'I need IT to build or change something. Here''s the problem: '
+- title: Write user stories
+  text: 'IT asked me for user stories for '
+- title: Brief a supplier
+  text: I need to brief a supplier on what we need.
+- title: Review my requirements
+  text: Can you check my requirements are clear and testable? I'll upload them.
+staff_guide:
+  upload: 'Anything you have: an idea brief, a process map, screenshots or IT''s questions.'
+  you_get: A requirements document in Word (with testable requirements, user stories, priorities and open
+    questions) and, if needed, a user-story file for Azure DevOps or Jira.
+  example: '"Our team re-types the same details into two systems. I need IT to fix it." The agent asks
+    about the problem, users and measures, then writes requirements like ''REQ-03: Details entered once
+    appear in both systems within 5 minutes''.'
+  tips:
+  - Describe what you need and why - leave how to build it to IT.
+  - 'Not everything can be a Must: the agent will help you prioritise.'

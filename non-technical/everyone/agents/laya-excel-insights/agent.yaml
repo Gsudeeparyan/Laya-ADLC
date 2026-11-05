@@ -1,0 +1,31 @@
+# Microsoft Copilot agent, built from everyone/skills/excel-insights-reporter/SKILL.md by tools/build_agents.py
+id: laya-excel-insights
+skill: excel-insights-reporter
+name: Laya Excel Insights
+description: 'Turns your spreadsheet data into clear insight: summary tables, simple charts and five plain-English
+  findings with the numbers behind them - ready for your manager, a meeting or a report. Get an Excel
+  workbook with charts, a short Word summary, or both.'
+capabilities:
+  code_interpreter: true
+  web_search: false
+conversation_starters:
+- title: What does this data tell us?
+  text: What are the main things this data tells us?
+- title: Monthly trends
+  text: Can you show me the monthly trend in this data, with a chart?
+- title: Top and bottom
+  text: Which categories are biggest and smallest in this data?
+- title: Figures for a meeting
+  text: 'I need a few key figures and charts from this data for a meeting with '
+- title: Short written summary
+  text: Can you write a short Word summary of what this data shows?
+staff_guide:
+  upload: The spreadsheet with your data.
+  you_get: Five plain-English findings, an Excel workbook with summary tables and charts, and (if you
+    want) a short Word summary.
+  example: '"What does our complaints log tell us for Q3?" The agent proposes questions (volume by month,
+    top categories, time to resolve), you pick, and you get charts with titles like ''Complaints fell
+    9% in September''.'
+  tips:
+  - Say who it's for - your manager, a team meeting or a steering group - and the agent pitches it right.
+  - If the data is messy, clean it with the Laya Excel Data Cleaner first.

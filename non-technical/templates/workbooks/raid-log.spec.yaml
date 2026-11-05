@@ -1,0 +1,151 @@
+adlc_spec: 1
+workbook:
+  title: RAID Log
+  template: raid-log
+  purpose: >-
+    One place to track a project's Risks, Assumptions, Issues and Dependencies (RAID).
+    Risks are scored automatically so the most serious ones stand out.
+  owner: ""
+  how_to_use:
+    - "Add one row per item on the 'RAID' sheet. Leave the ID blank - it is filled in for you."
+    - "Pick the Type: Risk (might happen), Assumption (we believe is true), Issue (is happening now) or Dependency (we need from someone else)."
+    - "For risks and issues, score Likelihood and Impact from 1 (low) to 5 (high). The Score and Rating work themselves out."
+    - "Review the open items every week and update the Status and Next step."
+    - "The 'Summary' sheet counts open items by type and draws a chart."
+
+parameters:
+  - key: red_score
+    label: Score at or above which an item is rated Red
+    type: integer
+    value: 15
+    description: Likelihood x Impact. 15 or more is Red by default.
+  - key: amber_score
+    label: Score at or above which an item is rated Amber
+    type: integer
+    value: 8
+    description: Scores from this number up to the Red score are Amber. Lower scores are Green.
+
+sheets:
+  - name: RAID
+    description: One row per risk, assumption, issue or dependency.
+    tables:
+      - key: raid
+        name: tblRAID
+        id_prefix: RAID-
+        columns:
+          - key: id
+            header: ID
+            type: id
+            description: Filled in automatically.
+          - key: type
+            header: Type
+            type: choice
+            choices: [Risk, Assumption, Issue, Dependency]
+            required: true
+            description: "Risk = might happen. Assumption = we believe is true. Issue = happening now. Dependency = we need it from someone else."
+          - key: title
+            header: Title
+            type: text
+            required: true
+            width: 36
+            description: A short name for the item.
+          - key: description
+            header: Description
+            type: long_text
+            width: 50
+            description: What it is and why it matters.
+          - key: owner
+            header: Owner
+            type: text
+            required: true
+            description: The person who manages this item.
+          - key: raised_on
+            header: Raised on
+            type: date
+            description: When it was first logged.
+          - key: likelihood
+            header: Likelihood
+            type: integer
+            min: 1
+            max: 5
+            description: 1 = very unlikely, 5 = almost certain. Issues are already happening, so use 5.
+          - key: impact
+            header: Impact
+            type: integer
+            min: 1
+            max: 5
+            description: 1 = minor, 5 = severe (cost, members, deadlines, compliance).
+          - key: score
+            header: Score
+            type: formula
+            formula: '=IF(OR([@Likelihood]="",[@Impact]=""),"",[@Likelihood]*[@Impact])'
+            number_format: '0'
+            description: Likelihood x Impact (1 to 25).
+          - key: rating
+            header: Rating
+            type: formula
+            formula: '=IF([@Score]="","",IF([@Score]>=p_red_score,"Red",IF([@Score]>=p_amber_score,"Amber","Green")))'
+            description: Red, Amber or Green, based on the Score.
+            highlights:
+              - {when: equals, value: Red, color: red}
+              - {when: equals, value: Amber, color: amber}
+              - {when: equals, value: Green, color: green}
+          - key: next_step
+            header: Next step / mitigation
+            type: long_text
+            width: 44
+            description: What is being done about it, and by when.
+          - key: due_date
+            header: Due date
+            type: date
+            description: When the next step should be done.
+          - key: status
+            header: Status
+            type: choice
+            choices: [Open, Monitoring, Closed]
+            required: true
+            description: Open = needs action. Monitoring = watching it. Closed = no longer relevant.
+            highlights:
+              - {when: equals, value: Closed, color: grey, whole_row: true}
+        rows:
+          - type: Risk
+            title: Example - delete this row when you add your own
+            description: Key people may be on leave during go-live week.
+            owner: Your name
+            raised_on: 2026-10-06
+            likelihood: 3
+            impact: 4
+            next_step: Agree cover and holiday freeze with team leads.
+            due_date: 2026-10-20
+            status: Open
+
+  - name: Summary
+    description: Open items by type, with a chart. Fills itself in.
+    tables:
+      - key: raid_summary
+        name: tblRAIDSummary
+        rows_from: {table: raid, column: type}
+        columns:
+          - key: type
+            header: Type
+            type: text
+          - key: open_items
+            header: Open
+            type: formula
+            formula: '=COUNTIFS(tblRAID[Type],[@Type],tblRAID[Status],"<>Closed")'
+            number_format: '0'
+            description: Items of this type that are not closed.
+          - key: red_items
+            header: Red
+            type: formula
+            formula: '=COUNTIFS(tblRAID[Type],[@Type],tblRAID[Status],"<>Closed",tblRAID[Rating],"Red")'
+            number_format: '0'
+            description: Open items of this type rated Red.
+    charts:
+      - key: open_by_type
+        type: column
+        title: Open items by type
+        table: raid_summary
+        category: type
+        values: [open_items, red_items]
+        anchor: E2

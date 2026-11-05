@@ -1,0 +1,13 @@
+# Replace @LAYA-ORG/ai-harness-owners with your team. See roles-and-lifecycle/cards/platform-engineer.md.
+# These files steer or run on every developer's machine, so they need the harness owner's review.
+/.github/copilot-instructions.md  @LAYA-ORG/ai-harness-owners
+/.github/instructions/            @LAYA-ORG/ai-harness-owners
+/.github/skills/                  @LAYA-ORG/ai-harness-owners
+/.github/agents/                  @LAYA-ORG/ai-harness-owners
+/.github/hooks/                   @LAYA-ORG/ai-harness-owners
+/.github/scripts/                 @LAYA-ORG/ai-harness-owners
+/.github/workflows/               @LAYA-ORG/ai-harness-owners
+/.github/rulesets/                @LAYA-ORG/ai-harness-owners
+/.github/CODEOWNERS               @LAYA-ORG/ai-harness-owners
+/.vscode/                         @LAYA-ORG/ai-harness-owners
+/CODING_STANDARDS.md              @LAYA-ORG/ai-harness-owners

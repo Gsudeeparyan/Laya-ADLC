@@ -1,0 +1,7 @@
+# Replace these with Laya's teams. See roles-and-lifecycle/cards/library-owner.md.
+*                                    @LAYA-ORG/library-owners
+/technical/harness/                  @LAYA-ORG/ai-harness-owners
+/.github/                            @LAYA-ORG/ai-harness-owners
+/best-practices/07-regulation.md     @LAYA-ORG/compliance
+/best-practices/06-data-protection.md @LAYA-ORG/dpo
+/roles-and-lifecycle/                @LAYA-ORG/compliance

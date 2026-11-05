@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AAD_TENANT_ID": "<tenant id>",
+    "AAD_CLIENT_ID": "<backend app registration client id>",
+    "AAD_CLIENT_SECRET": "<from Key Vault in Azure; local testing only>",
+    "VAULT_TABLE_URL": "https://<storage>.table.core.windows.net/piivault",
+    "VAULT_TTL_SECONDS": "1209600",
+    "ADLC_DEV_GRAPH_TOKEN": ""
+  }
+}

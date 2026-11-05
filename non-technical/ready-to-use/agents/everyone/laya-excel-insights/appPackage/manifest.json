@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "5dd68354-8602-540e-b6af-9e4bf7756f0b",
+  "developer": {
+    "name": "Laya Healthcare - Laya-ADLC agents",
+    "websiteUrl": "https://www.layahealthcare.ie",
+    "privacyUrl": "https://www.layahealthcare.ie",
+    "termsOfUseUrl": "https://www.layahealthcare.ie"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Laya Excel Insights",
+    "full": "Laya Excel Insights"
+  },
+  "description": {
+    "short": "Turns your spreadsheet data into clear insight: summary tables, simple charts an",
+    "full": "Turns your spreadsheet data into clear insight: summary tables, simple charts and five plain-English findings with the numbers behind them - ready for your manager, a meeting or a report. Get an Excel workbook with charts, a short Word summary, or both."
+  },
+  "accentColor": "#1F4E78",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "declarativeAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}
